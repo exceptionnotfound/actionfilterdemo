@@ -1,0 +1,29 @@
+﻿@model ActionFilterDemo.ViewModels.Home.HomeIndexVM
+
+@{
+    ViewBag.Title = "ActionFilter Demo";
+}
+
+<h2>ActionFilter Demo</h2>
+
+@if (TempData["FlashMessage"] != null)
+{
+    <span><strong>FLASH:</strong>@TempData["FlashMessage"].ToString()</span>
+}
+
+<div>
+    @Html.ActionLink("Reports", "Index", "Reports")
+</div>
+
+@using(Html.BeginForm())
+{
+    <div>
+        <div>
+            @Html.LabelFor(x => x.SelectedUser)
+            @Html.DropDownListFor(x=>x.SelectedUser, new SelectList(Model.Users, "UserID", "Name"))
+        </div>
+        <div>
+            <input type="submit" value="Go" />
+        </div>
+    </div>
+}

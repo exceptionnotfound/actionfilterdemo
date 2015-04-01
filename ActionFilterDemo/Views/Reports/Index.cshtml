@@ -1,0 +1,34 @@
+﻿@model ActionFilterDemo.ViewModels.Reports.ReportsIndexVM
+
+@{
+    ViewBag.Title = "Reports";
+}
+
+<h2>Reports</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Report Name
+            </th>
+            <th>
+                Created by
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var report in Model.Reports)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(report.Title, "View", new { id = report.ReportID })
+                </td>
+                <td>
+                    @report.User.Name
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
